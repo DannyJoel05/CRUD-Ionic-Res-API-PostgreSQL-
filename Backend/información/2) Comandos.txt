@@ -1,0 +1,89 @@
+CREACION DEL PROYECTO 
+
+#Instalar entorno virtual
+ python -m venv
+
+# Activar el entorno virtual
+.\env\Scripts\activate
+
+# Instalar paquetes 
+ Flask      => pip install Flask 
+ Cors       => pip install -U flask-cors
+ PostgreSQL => pip install psycopg2
+ env	    => pip install python-dotenv
+
+# Listar los paquetes instalados
+ pip list
+
+#Guardar en un .txt los paquetes instalados de un proyecto.
+ pip freeze > requirements.txt
+
+# Instalar los paquets del txt 
+ pip install -r requirements.txt
+
+/////////////////////////////////////////////////////////
+- ESTRCUTURA
+1) CREAR ARCHIVOS 
+- src
+ - database
+    - .env
+	USER= postgres
+	HOST= localhost
+	PASSWORD=123
+	DATABASE=Estudiantes
+	PORT=5433
+
+    - config.py
+	from dotenv import load_dotenv
+	import psycopg2
+	import os
+	load_dotenv()
+
+	user= os.environ['USER']
+	host= os.environ['HOST']
+	password=os.environ['PASSWORD']
+	database=os.environ['DATABASE']
+	port=os.environ['PORT']
+
+	connect = psycopg2.connect(dbname=database, user=user, password=password, host=host, port=port)
+ 
+- routes
+    - estudiantes.py
+	from flask import Blueprint, jsonify, request
+	from database.config import connect
+	import psycopg2.extras
+
+	estudiantes = Blueprint('estudiantes', __name__)
+
+	@estudiantes.route("/prueba", methods=["GET"])
+	def prueba():
+		return 'FUNCIONANDO CORRECAMENTE'
+
+ - app.py
+	from flask import Flask, jsonify
+	from flask_cors import CORS
+	from routes.estudiantes import estudiantes
+	app = Flask(__name__)
+	app.secret_key = "nombre_del_proyecto"
+
+	if __name__=='__main__':
+    	app.register_blueprint(estudiantes)
+    	CORS(app)
+    	app.run(port=3000, debug=True)
+
+
+Ionic - Python - Postgres
+
+Ionic - Flask - PosgreSQL | Crud Completa
+Ionic - Flask - PosgreSQL | 1) Creacion de la Base de datos
+Ionic - Flask - PosgreSQL | 2) Creacion de las funcniones en Postgres 
+
+
+
+
+
+
+
+
+
+

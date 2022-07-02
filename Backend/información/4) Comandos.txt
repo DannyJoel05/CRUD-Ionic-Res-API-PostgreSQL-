@@ -1,0 +1,17 @@
+POSTMAN
+{
+    "codigo":5,
+    "nombres":"Juanita",
+    "apellidos":"Code",
+    "correo":"juana.code@pueba.com",
+    "edad":18
+
+}
+CREATE 
+http://localhost:3000/proceso/1
+UPDATE 
+http://localhost:3000/proceso/2
+DELETE
+http://localhost:3000/proceso/3
+SHOW
+http://localhost:3000/mostrar

@@ -1,0 +1,60 @@
+ARCHIVO Estudiantes.py
+
+
+
+@estudiantes.route("/mostrar", methods=["GET"])
+def mostrar():
+    Mensaje=""
+    Bandera=False
+    Resultado=""
+    try:
+        cur = connect.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cur.execute("select * from Sp_Mostrar_Estudiante()")
+        Respuesta= cur.fetchall()
+        if(Respuesta):
+            Resultado=Respuesta
+            Bandera=True
+            Mensaje="EXITO AL REALIZAR LA CONSULTA"
+        else:
+            Mensaje="NO EXISTE INFORMACIÓN POR EL MOMENTO, COMUNIQUESE CON EL ADMINISTRADOR PARA MAS INFORMACIÓN"
+            Resultado=""
+            Bandera=False
+    except OSError as error:
+        Mensaje="HA OCURRIDO UN ERROR AL INTENTAR MOSTRAR LOS REGISTROS DE LA BASE DE DATOS: "+error
+    return jsonify({"Mesaje":Mensaje,"Ejecucion":Bandera, "Resultado":Resultado})
+
+
+@estudiantes.route("/proceso/<int:b>", methods=["PUT", "POST"])
+def Proceso(b):
+    print(request.json)
+    Mensaje=""
+    Bandera=False
+    Accion=""
+    if b == 1:
+        Accion="INSERTAR"
+    elif b == 2:
+        Accion="ACTUALIZAR"
+    elif b == 3:
+        Accion="ELIMINAR"
+    else:
+        Accion="DESCONOCIDO"
+
+    try:
+        cur = connect.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cur.execute("select Sp_Proceso_Estudiante(%s,%s,%s,%s,%s,%s)",
+            (   
+                request.json['Codigo'],
+                request.json['Nombres'],
+                request.json['Apellidos'],
+                request.json['Correo'],
+                request.json['Edad'],
+                b
+            )
+        )
+        connect.commit()
+        Bandera=True
+        Mensaje="EXITO AL "+Accion+" REGISTROS EN LA BASE DE DATOS."
+    except OSError as error:
+        Mensaje="HA OCURRIDO UN ERROR, AL INTENTAR "+Accion+" REGISTROS EN LA BASE DE DATOS: "+error
+        Bandera=False
+    return jsonify({"Mensaje":Mensaje,"Ejecucion":Bandera})
