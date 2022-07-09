@@ -1,0 +1,25 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>Formulario Estudiante</ion-card-subtitle>
+    <ion-card-title>Crear/Actualizar Información</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form >
+      <ion-item lines="none" class="border border-secondary rounded-pill m-2">
+        <ion-input placeholder="Ingrese los Nombres" type="text"></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="border border-secondary rounded-pill m-2">
+        <ion-input placeholder="Ingrese los Apellidos" type="text"></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="border border-secondary rounded-pill m-2">
+        <ion-input placeholder="Ingrese el Correo" type="email"></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="border border-secondary rounded-pill m-2">
+        <ion-input placeholder="Ingrese la Edad" type="number"></ion-input>
+      </ion-item>
+      <ion-button (click)="onGuardar()" expand="block" fill="clear" shape="round">
+        Guardar 
+      </ion-button>
+    </form>
+  </ion-card-content>
+</ion-card>

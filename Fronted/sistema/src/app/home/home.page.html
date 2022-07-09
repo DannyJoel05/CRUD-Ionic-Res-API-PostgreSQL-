@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Outline Buttons</ion-title>
+    <ion-buttons class="d-sm-inline-block d-md-none" slot="primary">
+      <ion-button (click)="onClick()" expand="block" fill="clear" shape="round">
+        Agregar
+        <ion-icon slot="end" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-4 d-none d-sm-inline-block">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Formulario Estudiantes</ion-card-subtitle>
+            <ion-card-title>Crear/Actualizar Información</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form>
+              <ion-item lines="none" class="border border-secondary rounded-pill m-2 shadow">
+                <ion-input placeholder="Apellidos" type="text"></ion-input>
+              </ion-item>
+              <ion-item lines="none" class="border border-secondary rounded-pill m-2 ">
+                <ion-input placeholder="Apellidos" type="text"></ion-input>
+              </ion-item>
+              <ion-item lines="none" class="border border-secondary rounded-pill m-2">
+                <ion-input placeholder="Apellidos" type="text"></ion-input>
+              </ion-item>
+              <ion-button (click)="onClick()" expand="block" shape="round">
+                Guardar <ion-icon slot="end" name="save-outline"></ion-icon>
+              </ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <div class="col-12 col-md-8">
+        <ion-card class="m-1">
+          <ion-card-header>
+            <ion-card-subtitle>Visualización de los Datos</ion-card-subtitle>
+            <ion-card-title>Datos Estudiantes</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>
+                    <ion-button (click)="onClick()" color="warning">
+                      <ion-icon slot="icon-only" name="pencil"></ion-icon>
+                    </ion-button>
+                    <ion-button (click)="onClick()" color="danger">
+                      <ion-icon slot="icon-only" name="trash"></ion-icon>
+                    </ion-button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Mark</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>
+                    <ion-button (click)="onClick()">
+                      <ion-icon slot="icon-only" name="add"></ion-icon>
+                    </ion-button>
+                    <ion-button (click)="onClick()">
+                      <ion-icon slot="icon-only" name="add"></ion-icon>
+                    </ion-button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td >Larry the Bird</td>
+                  <td>Mark</td>
+                  <td >Larry the Bird</td>
+                  <td>
+                    <ion-button (click)="onClick()">
+                      <ion-icon slot="icon-only" name="add"></ion-icon>
+                    </ion-button>
+                    <ion-button (click)="onClick()">
+                      <ion-icon slot="icon-only" name="add"></ion-icon>
+                    </ion-button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>
