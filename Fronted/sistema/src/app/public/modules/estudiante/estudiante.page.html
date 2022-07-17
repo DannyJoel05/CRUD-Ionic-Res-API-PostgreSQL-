@@ -1,8 +1,8 @@
-<ion-header >
+<ion-header>
   <ion-toolbar>
     <ion-title>Estudiantes</ion-title>
     <ion-buttons slot="primary">
-      <ion-button fill="outline" (click)="onAbrirModal()">
+      <ion-button fill="outline" (click)="modal('Nueva',null)">
         Agregar
         <ion-icon slot="end" name="add"></ion-icon>
       </ion-button>
@@ -12,6 +12,12 @@
 
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh"
+      refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
@@ -36,92 +42,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>20</td>
+                <tr *ngFor="let item of respuesta">
+                  <th scope="row">{{item[0]}}</th>
+                  <td>{{item[1]}}</td>
+                  <td>{{item[2]}}</td>
+                  <td>{{item[3]}}</td>
+                  <td>{{item[4]}}</td>
                   <td>
-                    <ion-button (click)="onEditar()" color="warning">
+                    <ion-button (click)="modal('Actualizar',item)" color="warning">
                       <ion-icon slot="icon-only" name="pencil"></ion-icon>
                     </ion-button>
-                    <ion-button (click)="onEliminar()" color="danger">
-                      <ion-icon slot="icon-only" name="trash"></ion-icon>
-                    </ion-button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>20</td>
-                  <td>
-                    <ion-button (click)="onEditar()" color="warning">
-                      <ion-icon slot="icon-only" name="pencil"></ion-icon>
-                    </ion-button>
-                    <ion-button (click)="onEliminar()" color="danger">
-                      <ion-icon slot="icon-only" name="trash"></ion-icon>
-                    </ion-button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>20</td>
-                  <td>
-                    <ion-button (click)="onEditar()" color="warning">
-                      <ion-icon slot="icon-only" name="pencil"></ion-icon>
-                    </ion-button>
-                    <ion-button (click)="onEliminar()" color="danger">
-                      <ion-icon slot="icon-only" name="trash"></ion-icon>
-                    </ion-button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>20</td>
-                  <td>
-                    <ion-button (click)="onEditar()" color="warning">
-                      <ion-icon slot="icon-only" name="pencil"></ion-icon>
-                    </ion-button>
-                    <ion-button (click)="onEliminar()" color="danger">
-                      <ion-icon slot="icon-only" name="trash"></ion-icon>
-                    </ion-button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>20</td>
-                  <td>
-                    <ion-button (click)="onEditar()" color="warning">
-                      <ion-icon slot="icon-only" name="pencil"></ion-icon>
-                    </ion-button>
-                    <ion-button (click)="onEliminar()" color="danger">
-                      <ion-icon slot="icon-only" name="trash"></ion-icon>
-                    </ion-button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                  <td>20</td>
-                  <td>
-                    <ion-button (click)="onEditar()" color="warning">
-                      <ion-icon slot="icon-only" name="pencil"></ion-icon>
-                    </ion-button>
-                    <ion-button (click)="onEliminar()" color="danger">
+                    <ion-button (click)="eliminar(item)" color="danger">
                       <ion-icon slot="icon-only" name="trash"></ion-icon>
                     </ion-button>
                   </td>

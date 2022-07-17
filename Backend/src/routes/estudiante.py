@@ -34,7 +34,8 @@ def proceso(b):
         if b==1: accion="INSERTAR"
         elif b==2: accion="ACTUALIZAR"
         elif b==3: accion="ELIMINAR"
-
+        print (b)
+        print (request)
         cur = connect.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cur.execute("select Sp_Proceso_Estudiante(%s,%s,%s,%s,%s,%s)",
             (   

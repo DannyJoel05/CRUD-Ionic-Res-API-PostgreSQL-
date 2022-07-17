@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class BackendService {
-  public url:string;
+  private url:string;
   public ruta:string;
   public json:any;
 
@@ -16,6 +16,7 @@ export class BackendService {
   //Definir el metodo get
 
   public async getService():Promise<any>{
+     console.log(this.url+this.ruta)
     try {
       const res= await axios({
         method:'GET',

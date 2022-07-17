@@ -1,23 +1,26 @@
 <ion-card>
+  <ion-button (click)="cerrar_modal()" fill="clear" >
+    <ion-icon name="arrow-back-outline"></ion-icon>
+  </ion-button>
   <ion-card-header>
     <ion-card-subtitle>Formulario Estudiante</ion-card-subtitle>
-    <ion-card-title>Crear/Actualizar Información</ion-card-title>
+    <ion-card-title>{{titulo}} Información</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <form >
+    <form [formGroup]="formulario" (ngSubmit)="guardar()">
       <ion-item lines="none" class="border border-secondary rounded-pill m-2">
-        <ion-input placeholder="Ingrese los Nombres" type="text"></ion-input>
+        <ion-input placeholder="Ingrese los Nombres" type="text" formControlName="nombres"></ion-input>
       </ion-item>
       <ion-item lines="none" class="border border-secondary rounded-pill m-2">
-        <ion-input placeholder="Ingrese los Apellidos" type="text"></ion-input>
+        <ion-input placeholder="Ingrese los Apellidos" type="text" formControlName="apellidos"></ion-input>
       </ion-item>
       <ion-item lines="none" class="border border-secondary rounded-pill m-2">
-        <ion-input placeholder="Ingrese el Correo" type="email"></ion-input>
+        <ion-input placeholder="Ingrese el Correo" type="email" formControlName="correo"></ion-input>
       </ion-item>
       <ion-item lines="none" class="border border-secondary rounded-pill m-2">
-        <ion-input placeholder="Ingrese la Edad" type="number"></ion-input>
+        <ion-input placeholder="Ingrese la Edad" type="number" formControlName="edad"></ion-input>
       </ion-item>
-      <ion-button (click)="onGuardar()" expand="block" fill="clear" shape="round">
+      <ion-button (click)="guardar()" expand="block" shape="round">
         Guardar 
       </ion-button>
     </form>
